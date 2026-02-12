@@ -16,6 +16,8 @@ exports.AuthController = void 0;
 const common_1 = require("@nestjs/common");
 const auth_service_1 = require("./auth.service");
 const dto_1 = require("./dto");
+const response_message_decorator_1 = require("../../common/decorators/response-message.decorator");
+const messages_constant_1 = require("../../common/constants/messages.constant");
 let AuthController = class AuthController {
     authService;
     constructor(authService) {
@@ -31,6 +33,7 @@ let AuthController = class AuthController {
 exports.AuthController = AuthController;
 __decorate([
     (0, common_1.Post)('register'),
+    (0, response_message_decorator_1.ResponseMessage)(messages_constant_1.ResponseMessages.REGISTER_SUCCESS),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [dto_1.RegisterDto]),
@@ -39,6 +42,7 @@ __decorate([
 __decorate([
     (0, common_1.Post)('login'),
     (0, common_1.HttpCode)(common_1.HttpStatus.OK),
+    (0, response_message_decorator_1.ResponseMessage)(messages_constant_1.ResponseMessages.LOGIN_SUCCESS),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [dto_1.LoginDto]),

@@ -80,7 +80,9 @@ export class WatchlistService {
     return this.prisma.watchlist.update({
       where: { id },
       data: {
-        ...(dto.target_price !== undefined && { targetPrice: dto.target_price }),
+        ...(dto.target_price !== undefined && {
+          targetPrice: dto.target_price,
+        }),
         ...(dto.notes !== undefined && { notes: dto.notes }),
       },
       include: {

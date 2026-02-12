@@ -17,6 +17,8 @@ const common_1 = require("@nestjs/common");
 const portfolio_service_1 = require("./portfolio.service");
 const guards_1 = require("../../common/guards");
 const decorators_1 = require("../../common/decorators");
+const response_message_decorator_1 = require("../../common/decorators/response-message.decorator");
+const messages_constant_1 = require("../../common/constants/messages.constant");
 let PortfolioController = class PortfolioController {
     portfolioService;
     constructor(portfolioService) {
@@ -29,6 +31,7 @@ let PortfolioController = class PortfolioController {
 exports.PortfolioController = PortfolioController;
 __decorate([
     (0, common_1.Get)(),
+    (0, response_message_decorator_1.ResponseMessage)(messages_constant_1.ResponseMessages.PORTFOLIO_SUCCESS),
     __param(0, (0, decorators_1.CurrentUser)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),

@@ -1,5 +1,6 @@
-import { PrismaService } from '../../prisma';
-import { CreateStockDto, UpdateStockDto } from './dto';
+import { PrismaService } from '../../prisma/prisma.service';
+import { CreateStockDto } from './dto/create-stock.dto';
+import { UpdateStockDto } from './dto/update-stock.dto';
 export declare class StocksService {
     private readonly prisma;
     constructor(prisma: PrismaService);

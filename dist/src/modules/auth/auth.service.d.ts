@@ -8,8 +8,8 @@ export declare class AuthService {
     register(dto: RegisterDto): Promise<{
         message: string;
         user: {
-            email: string;
             id: string;
+            email: string;
             fullName: string;
             createdAt: Date;
         };

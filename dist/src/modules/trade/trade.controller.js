@@ -18,6 +18,8 @@ const trade_service_1 = require("./trade.service");
 const dto_1 = require("./dto");
 const guards_1 = require("../../common/guards");
 const decorators_1 = require("../../common/decorators");
+const response_message_decorator_1 = require("../../common/decorators/response-message.decorator");
+const messages_constant_1 = require("../../common/constants/messages.constant");
 let TradeController = class TradeController {
     tradeService;
     constructor(tradeService) {
@@ -33,6 +35,7 @@ let TradeController = class TradeController {
 exports.TradeController = TradeController;
 __decorate([
     (0, common_1.Post)('buy'),
+    (0, response_message_decorator_1.ResponseMessage)(messages_constant_1.ResponseMessages.TRADE_SUCCESS),
     __param(0, (0, decorators_1.CurrentUser)()),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -41,6 +44,7 @@ __decorate([
 ], TradeController.prototype, "buy", null);
 __decorate([
     (0, common_1.Post)('sell'),
+    (0, response_message_decorator_1.ResponseMessage)(messages_constant_1.ResponseMessages.TRADE_SUCCESS),
     __param(0, (0, decorators_1.CurrentUser)()),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),

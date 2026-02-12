@@ -17,6 +17,8 @@ const common_1 = require("@nestjs/common");
 const stocks_service_1 = require("./stocks.service");
 const dto_1 = require("./dto");
 const guards_1 = require("../../common/guards");
+const response_message_decorator_1 = require("../../common/decorators/response-message.decorator");
+const messages_constant_1 = require("../../common/constants/messages.constant");
 let StocksController = class StocksController {
     stocksService;
     constructor(stocksService) {
@@ -28,6 +30,9 @@ let StocksController = class StocksController {
     findAll() {
         return this.stocksService.findAll();
     }
+    findOne(symbol) {
+        return this.stocksService.findOne(symbol);
+    }
     update(symbol, updateStockDto) {
         return this.stocksService.update(symbol, updateStockDto);
     }
@@ -38,6 +43,7 @@ let StocksController = class StocksController {
 exports.StocksController = StocksController;
 __decorate([
     (0, common_1.Post)(),
+    (0, response_message_decorator_1.ResponseMessage)(messages_constant_1.ResponseMessages.STOCK_CREATED),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [dto_1.CreateStockDto]),
@@ -45,12 +51,22 @@ __decorate([
 ], StocksController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(),
+    (0, response_message_decorator_1.ResponseMessage)(messages_constant_1.ResponseMessages.STOCK_LIST_SUCCESS),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], StocksController.prototype, "findAll", null);
 __decorate([
+    (0, common_1.Get)(':symbol'),
+    (0, response_message_decorator_1.ResponseMessage)(messages_constant_1.ResponseMessages.STOCK_DETAIL_SUCCESS),
+    __param(0, (0, common_1.Param)('symbol')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], StocksController.prototype, "findOne", null);
+__decorate([
     (0, common_1.Patch)(':symbol'),
+    (0, response_message_decorator_1.ResponseMessage)(messages_constant_1.ResponseMessages.STOCK_UPDATED),
     __param(0, (0, common_1.Param)('symbol')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -59,6 +75,7 @@ __decorate([
 ], StocksController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(':symbol'),
+    (0, response_message_decorator_1.ResponseMessage)(messages_constant_1.ResponseMessages.STOCK_DELETED),
     __param(0, (0, common_1.Param)('symbol')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),

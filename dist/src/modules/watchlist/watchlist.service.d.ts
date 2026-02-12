@@ -16,10 +16,10 @@ export declare class WatchlistService {
         id: string;
         createdAt: Date;
         updatedAt: Date;
-        notes: string | null;
         userId: string;
-        stockSymbol: string;
         targetPrice: import("@prisma/client-runtime-utils").Decimal | null;
+        notes: string | null;
+        stockSymbol: string;
     }>;
     findAll(userId: string): Promise<({
         stock: {
@@ -31,10 +31,10 @@ export declare class WatchlistService {
         id: string;
         createdAt: Date;
         updatedAt: Date;
-        notes: string | null;
         userId: string;
-        stockSymbol: string;
         targetPrice: import("@prisma/client-runtime-utils").Decimal | null;
+        notes: string | null;
+        stockSymbol: string;
     })[]>;
     update(userId: string, id: string, dto: UpdateWatchlistDto): Promise<{
         stock: {
@@ -49,10 +49,10 @@ export declare class WatchlistService {
         id: string;
         createdAt: Date;
         updatedAt: Date;
-        notes: string | null;
         userId: string;
-        stockSymbol: string;
         targetPrice: import("@prisma/client-runtime-utils").Decimal | null;
+        notes: string | null;
+        stockSymbol: string;
     }>;
     remove(userId: string, id: string): Promise<{
         message: string;

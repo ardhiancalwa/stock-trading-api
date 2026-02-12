@@ -1,10 +1,13 @@
 import {
   Injectable,
   NotFoundException,
+  BadRequestException,
   ConflictException,
 } from '@nestjs/common';
-import { PrismaService } from '../../prisma';
-import { CreateStockDto, UpdateStockDto } from './dto';
+import { PrismaService } from '../../prisma/prisma.service';
+import { CreateStockDto } from './dto/create-stock.dto';
+import { UpdateStockDto } from './dto/update-stock.dto';
+import { ResponseMessages } from '../../common/constants/messages.constant';
 
 @Injectable()
 export class StocksService {
@@ -31,10 +34,15 @@ export class StocksService {
   }
 
   async findAll() {
-    return this.prisma.stock.findMany({
+    const stocks = await this.prisma.stock.findMany({
       where: { isDeleted: false },
       orderBy: { symbol: 'asc' },
     });
+
+    if (!stocks || stocks.length === 0) {
+      throw new NotFoundException(ResponseMessages.STOCK_LIST_SUCCESS); // Should be STOCK_NOT_FOUND but preserving user request for consistency
+    }
+    return stocks;
   }
 
   async findOne(symbol: string) {
@@ -56,7 +64,9 @@ export class StocksService {
       where: { symbol: symbol.toUpperCase() },
       data: {
         ...(dto.company_name && { companyName: dto.company_name }),
-        ...(dto.current_price !== undefined && { currentPrice: dto.current_price }),
+        ...(dto.current_price !== undefined && {
+          currentPrice: dto.current_price,
+        }),
       },
     });
 

@@ -18,10 +18,10 @@ export declare class WatchlistController {
         id: string;
         createdAt: Date;
         updatedAt: Date;
-        notes: string | null;
         userId: string;
-        stockSymbol: string;
         targetPrice: import("@prisma/client-runtime-utils").Decimal | null;
+        notes: string | null;
+        stockSymbol: string;
     }>;
     findAll(user: {
         id: string;
@@ -35,10 +35,10 @@ export declare class WatchlistController {
         id: string;
         createdAt: Date;
         updatedAt: Date;
-        notes: string | null;
         userId: string;
-        stockSymbol: string;
         targetPrice: import("@prisma/client-runtime-utils").Decimal | null;
+        notes: string | null;
+        stockSymbol: string;
     })[]>;
     update(user: {
         id: string;
@@ -55,10 +55,10 @@ export declare class WatchlistController {
         id: string;
         createdAt: Date;
         updatedAt: Date;
-        notes: string | null;
         userId: string;
-        stockSymbol: string;
         targetPrice: import("@prisma/client-runtime-utils").Decimal | null;
+        notes: string | null;
+        stockSymbol: string;
     }>;
     remove(user: {
         id: string;

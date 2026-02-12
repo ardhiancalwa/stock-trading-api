@@ -18,6 +18,8 @@ const watchlist_service_1 = require("./watchlist.service");
 const dto_1 = require("./dto");
 const guards_1 = require("../../common/guards");
 const decorators_1 = require("../../common/decorators");
+const response_message_decorator_1 = require("../../common/decorators/response-message.decorator");
+const messages_constant_1 = require("../../common/constants/messages.constant");
 let WatchlistController = class WatchlistController {
     watchlistService;
     constructor(watchlistService) {
@@ -39,6 +41,7 @@ let WatchlistController = class WatchlistController {
 exports.WatchlistController = WatchlistController;
 __decorate([
     (0, common_1.Post)(),
+    (0, response_message_decorator_1.ResponseMessage)(messages_constant_1.ResponseMessages.WATCHLIST_ADDED),
     __param(0, (0, decorators_1.CurrentUser)()),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -47,6 +50,7 @@ __decorate([
 ], WatchlistController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(),
+    (0, response_message_decorator_1.ResponseMessage)(messages_constant_1.ResponseMessages.WATCHLIST_LIST_SUCCESS),
     __param(0, (0, decorators_1.CurrentUser)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
@@ -54,6 +58,7 @@ __decorate([
 ], WatchlistController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Patch)(':id'),
+    (0, response_message_decorator_1.ResponseMessage)(messages_constant_1.ResponseMessages.UPDATED),
     __param(0, (0, decorators_1.CurrentUser)()),
     __param(1, (0, common_1.Param)('id')),
     __param(2, (0, common_1.Body)()),
@@ -63,6 +68,7 @@ __decorate([
 ], WatchlistController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(':id'),
+    (0, response_message_decorator_1.ResponseMessage)(messages_constant_1.ResponseMessages.WATCHLIST_REMOVED),
     __param(0, (0, decorators_1.CurrentUser)()),
     __param(1, (0, common_1.Param)('id')),
     __metadata("design:type", Function),

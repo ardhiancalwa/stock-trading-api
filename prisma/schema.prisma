@@ -7,17 +7,16 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  password  String
-  fullName  String   @map("full_name")
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-
-  wallet       Wallet?
-  watchlists   Watchlist[]
+  id           String        @id @default(uuid())
+  email        String        @unique
+  password     String
+  fullName     String        @map("full_name")
+  createdAt    DateTime      @default(now()) @map("created_at")
+  updatedAt    DateTime      @updatedAt @map("updated_at")
   portfolios   Portfolio[]
   transactions Transaction[]
+  wallet       Wallet?
+  watchlists   Watchlist[]
 
   @@map("users")
 }
@@ -28,23 +27,21 @@ model Wallet {
   balance   Decimal  @default(0) @db.Decimal(15, 2)
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("wallets")
 }
 
 model Stock {
-  symbol       String   @id
-  companyName  String   @map("company_name")
-  currentPrice Decimal  @map("current_price") @db.Decimal(15, 2)
-  isDeleted    Boolean  @default(false) @map("is_deleted")
-  createdAt    DateTime @default(now()) @map("created_at")
-  updatedAt    DateTime @updatedAt @map("updated_at")
-
-  watchlists   Watchlist[]
+  symbol       String        @id
+  companyName  String        @map("company_name")
+  currentPrice Decimal       @map("current_price") @db.Decimal(15, 2)
+  isDeleted    Boolean       @default(false) @map("is_deleted")
+  createdAt    DateTime      @default(now()) @map("created_at")
+  updatedAt    DateTime      @updatedAt @map("updated_at")
   portfolios   Portfolio[]
   transactions Transaction[]
+  watchlists   Watchlist[]
 
   @@map("stocks")
 }
@@ -57,24 +54,21 @@ model Watchlist {
   notes       String?
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
-
-  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
-  stock Stock @relation(fields: [stockSymbol], references: [symbol], onDelete: Cascade)
+  stock       Stock    @relation(fields: [stockSymbol], references: [symbol], onDelete: Cascade)
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId, stockSymbol])
   @@map("watchlists")
 }
 
 model Portfolio {
-  userId      String @map("user_id")
-  stockSymbol String @map("stock_symbol")
-  totalShares Int    @default(0) @map("total_shares")
-
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-
-  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
-  stock Stock @relation(fields: [stockSymbol], references: [symbol], onDelete: Cascade)
+  userId      String   @map("user_id")
+  stockSymbol String   @map("stock_symbol")
+  totalShares Int      @default(0) @map("total_shares")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  stock       Stock    @relation(fields: [stockSymbol], references: [symbol], onDelete: Cascade)
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@id([userId, stockSymbol])
   @@map("portfolios")
@@ -89,9 +83,8 @@ model Transaction {
   price       Decimal         @db.Decimal(15, 2)
   total       Decimal         @db.Decimal(15, 2)
   createdAt   DateTime        @default(now()) @map("created_at")
-
-  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
-  stock Stock @relation(fields: [stockSymbol], references: [symbol], onDelete: Cascade)
+  stock       Stock           @relation(fields: [stockSymbol], references: [symbol], onDelete: Cascade)
+  user        User            @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("transactions")
 }

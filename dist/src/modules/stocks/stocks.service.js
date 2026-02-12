@@ -11,7 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.StocksService = void 0;
 const common_1 = require("@nestjs/common");
-const prisma_1 = require("../../prisma");
+const prisma_service_1 = require("../../prisma/prisma.service");
+const messages_constant_1 = require("../../common/constants/messages.constant");
 let StocksService = class StocksService {
     prisma;
     constructor(prisma) {
@@ -34,10 +35,14 @@ let StocksService = class StocksService {
         return stock;
     }
     async findAll() {
-        return this.prisma.stock.findMany({
+        const stocks = await this.prisma.stock.findMany({
             where: { isDeleted: false },
             orderBy: { symbol: 'asc' },
         });
+        if (!stocks || stocks.length === 0) {
+            throw new common_1.NotFoundException(messages_constant_1.ResponseMessages.STOCK_LIST_SUCCESS);
+        }
+        return stocks;
     }
     async findOne(symbol) {
         const stock = await this.prisma.stock.findUnique({
@@ -54,7 +59,9 @@ let StocksService = class StocksService {
             where: { symbol: symbol.toUpperCase() },
             data: {
                 ...(dto.company_name && { companyName: dto.company_name }),
-                ...(dto.current_price !== undefined && { currentPrice: dto.current_price }),
+                ...(dto.current_price !== undefined && {
+                    currentPrice: dto.current_price,
+                }),
             },
         });
         return stock;
@@ -71,6 +78,6 @@ let StocksService = class StocksService {
 exports.StocksService = StocksService;
 exports.StocksService = StocksService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [prisma_1.PrismaService])
+    __metadata("design:paramtypes", [prisma_service_1.PrismaService])
 ], StocksService);
 //# sourceMappingURL=stocks.service.js.map
