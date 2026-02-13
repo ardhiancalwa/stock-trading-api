@@ -15,6 +15,7 @@ const stocks_module_1 = require("./modules/stocks/stocks.module");
 const watchlist_module_1 = require("./modules/watchlist/watchlist.module");
 const portfolio_module_1 = require("./modules/portfolio/portfolio.module");
 const trade_module_1 = require("./modules/trade/trade.module");
+const wallet_module_1 = require("./modules/wallet/wallet.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -31,6 +32,7 @@ exports.AppModule = AppModule = __decorate([
             watchlist_module_1.WatchlistModule,
             portfolio_module_1.PortfolioModule,
             trade_module_1.TradeModule,
+            wallet_module_1.WalletModule,
         ],
     })
 ], AppModule);

@@ -108,6 +108,6 @@ export class WatchlistService {
       where: { id },
     });
 
-    return { message: 'Watchlist item removed successfully' };
+    return null;
   }
 }

@@ -71,7 +71,6 @@ let TradeService = class TradeService {
                 },
             });
             return {
-                message: 'Buy order executed successfully',
                 transaction: {
                     id: transaction.id,
                     type: transaction.type,
@@ -147,7 +146,6 @@ let TradeService = class TradeService {
                 },
             });
             return {
-                message: 'Sell order executed successfully',
                 transaction: {
                     id: transaction.id,
                     type: transaction.type,

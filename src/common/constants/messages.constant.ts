@@ -36,4 +36,8 @@ export const ResponseMessages = {
   TRADE_SUCCESS: 'Transaction completed successfully',
   INSUFFICIENT_BALANCE: 'Insufficient balance',
   INSUFFICIENT_SHARES: 'Insufficient stock shares',
+
+  // Wallet
+  WALLET_SUCCESS: 'Wallet retrieved successfully',
+  WALLET_DEPOSIT_SUCCESS: 'Deposit successful',
 };

@@ -80,10 +80,7 @@ let AuthService = class AuthService {
                 createdAt: true,
             },
         });
-        return {
-            message: 'User registered successfully',
-            user,
-        };
+        return user;
     }
     async login(dto) {
         const user = await this.prisma.user.findUnique({

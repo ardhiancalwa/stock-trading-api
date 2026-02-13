@@ -54,7 +54,5 @@ export declare class WatchlistService {
         notes: string | null;
         stockSymbol: string;
     }>;
-    remove(userId: string, id: string): Promise<{
-        message: string;
-    }>;
+    remove(userId: string, id: string): Promise<null>;
 }

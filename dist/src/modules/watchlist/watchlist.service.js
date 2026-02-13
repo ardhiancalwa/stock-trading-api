@@ -99,7 +99,7 @@ let WatchlistService = class WatchlistService {
         await this.prisma.watchlist.delete({
             where: { id },
         });
-        return { message: 'Watchlist item removed successfully' };
+        return null;
     }
 };
 exports.WatchlistService = WatchlistService;

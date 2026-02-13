@@ -26,4 +26,6 @@ export declare const ResponseMessages: {
     TRADE_SUCCESS: string;
     INSUFFICIENT_BALANCE: string;
     INSUFFICIENT_SHARES: string;
+    WALLET_SUCCESS: string;
+    WALLET_DEPOSIT_SUCCESS: string;
 };

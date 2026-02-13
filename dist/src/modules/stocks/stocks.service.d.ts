@@ -36,7 +36,5 @@ export declare class StocksService {
         currentPrice: import("@prisma/client-runtime-utils").Decimal;
         isDeleted: boolean;
     }>;
-    remove(symbol: string): Promise<{
-        message: string;
-    }>;
+    remove(symbol: string): Promise<null>;
 }

@@ -4,7 +4,6 @@ export declare class TradeService {
     private readonly prisma;
     constructor(prisma: PrismaService);
     buy(userId: string, dto: TradeDto): Promise<{
-        message: string;
         transaction: {
             id: string;
             type: import("@prisma/client").$Enums.TransactionType;
@@ -16,7 +15,6 @@ export declare class TradeService {
         };
     }>;
     sell(userId: string, dto: TradeDto): Promise<{
-        message: string;
         transaction: {
             id: string;
             type: import("@prisma/client").$Enums.TransactionType;

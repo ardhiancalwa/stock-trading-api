@@ -72,7 +72,7 @@ let StocksService = class StocksService {
             where: { symbol: symbol.toUpperCase() },
             data: { isDeleted: true },
         });
-        return { message: 'Stock deleted successfully' };
+        return null;
     }
 };
 exports.StocksService = StocksService;

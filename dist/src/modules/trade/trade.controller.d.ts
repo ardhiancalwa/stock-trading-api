@@ -6,7 +6,6 @@ export declare class TradeController {
     buy(user: {
         id: string;
     }, tradeDto: TradeDto): Promise<{
-        message: string;
         transaction: {
             id: string;
             type: import("@prisma/client").$Enums.TransactionType;
@@ -20,7 +19,6 @@ export declare class TradeController {
     sell(user: {
         id: string;
     }, tradeDto: TradeDto): Promise<{
-        message: string;
         transaction: {
             id: string;
             type: import("@prisma/client").$Enums.TransactionType;

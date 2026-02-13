@@ -74,7 +74,6 @@ export class TradeService {
       });
 
       return {
-        message: 'Buy order executed successfully',
         transaction: {
           id: transaction.id,
           type: transaction.type,
@@ -159,7 +158,6 @@ export class TradeService {
       });
 
       return {
-        message: 'Sell order executed successfully',
         transaction: {
           id: transaction.id,
           type: transaction.type,

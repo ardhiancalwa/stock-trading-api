@@ -81,6 +81,6 @@ export class StocksService {
       data: { isDeleted: true },
     });
 
-    return { message: 'Stock deleted successfully' };
+    return null;
   }
 }

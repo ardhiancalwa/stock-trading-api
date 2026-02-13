@@ -29,5 +29,7 @@ exports.ResponseMessages = {
     TRADE_SUCCESS: 'Transaction completed successfully',
     INSUFFICIENT_BALANCE: 'Insufficient balance',
     INSUFFICIENT_SHARES: 'Insufficient stock shares',
+    WALLET_SUCCESS: 'Wallet retrieved successfully',
+    WALLET_DEPOSIT_SUCCESS: 'Deposit successful',
 };
 //# sourceMappingURL=messages.constant.js.map

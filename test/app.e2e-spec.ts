@@ -83,8 +83,8 @@ describe('Stock Trading API (e2e)', () => {
       expect(response.body.statusCode).toBe(201);
       expect(response.body.message).toBeDefined();
       expect(response.body.data).toBeDefined();
-      expect(response.body.data.user.email).toBe(testUser.email);
-      expect(response.body.data.user.fullName).toBe(testUser.full_name);
+      expect(response.body.data.email).toBe(testUser.email);
+      expect(response.body.data.fullName).toBe(testUser.full_name);
     });
 
     it('POST /auth/register - should reject duplicate email', async () => {

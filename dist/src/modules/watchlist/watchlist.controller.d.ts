@@ -62,7 +62,5 @@ export declare class WatchlistController {
     }>;
     remove(user: {
         id: string;
-    }, id: string): Promise<{
-        message: string;
-    }>;
+    }, id: string): Promise<null>;
 }

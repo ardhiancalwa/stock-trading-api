@@ -45,10 +45,7 @@ export class AuthService {
       },
     });
 
-    return {
-      message: 'User registered successfully',
-      user,
-    };
+    return user;
   }
 
   async login(dto: LoginDto) {
